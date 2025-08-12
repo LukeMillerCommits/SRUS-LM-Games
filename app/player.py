@@ -4,10 +4,10 @@ class Player:
         self._name = name
 
     def uid(self):
-        return self.uid
+        return self._uid
 
     def name(self):
-        return self.name
+        return self._name
 
     def __str__(self):
         return str(self)
