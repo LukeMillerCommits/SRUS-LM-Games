@@ -1,7 +1,7 @@
 class Player:
     def __init__(self, uid, name):
-        self.uid = uid
-        self.name = name
+        self._uid = uid
+        self._name = name
 
     def uid(self):
         return self.uid
