@@ -10,17 +10,28 @@ class PlayerNode:
         self._next_node = next_node
         self._prev_node = prev_node
 
+    @property
     def player(self):
         return self._player
 
+    @property
     def next_node(self):
         return self._next_node
 
+    @next_node.setter
+    def next_node(self, next_node=None):
+        self._next_node = next_node
+
+    @property
     def prev_node(self):
         return self._prev_node
 
+    @prev_node.setter
+    def prev_node(self, prev_node=None):
+        self._prev_node = prev_node
+
     def key(self):
-        return self.player().uid
+        return self.player.uid
 
     def __str__(self):
         return str(self)
