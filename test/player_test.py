@@ -3,7 +3,7 @@ import unittest
 from unittest import TestCase
 
 
-class TestNode(unittest.TestCase):
+class TestPlayer(unittest.TestCase):
     def test_uid_returns_uid(self):
         self.assertEqual(Player(1, "Luke").uid, 1)
 
