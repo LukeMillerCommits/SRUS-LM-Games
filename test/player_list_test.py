@@ -22,3 +22,9 @@ class TestPlayerList(unittest.TestCase):
         players = PlayerList()
         players.insert_node(Player("1", "Luke"))
         self.assertEqual(players.pop_from_head(), "Luke")
+
+    def test_insert_node_into_full_list(self):
+        players = PlayerList()
+        players.insert_node(Player("1", "Luke"))
+        players.insert_node(Player("2", "Jake"))
+        self.assertEqual(players.pop_from_head(), "Jake")

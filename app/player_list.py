@@ -22,8 +22,8 @@ class PlayerList:
             # self.root_tail = new_node
 
         else:
-            old_head_node = self.root
 
+            old_head_node = self.root
             # Connection 1 - new_node.next is None by default
             # Connection 3
             old_head_node.next_node = new_node
