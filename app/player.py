@@ -12,4 +12,4 @@ class Player:
         return self._name
 
     def __str__(self) -> str:
-        return str(self)
+        return str(self.name)

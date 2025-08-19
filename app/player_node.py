@@ -3,12 +3,15 @@ from player import Player
 
 class PlayerNode:
     def __init__(self,
-                 player=Player,
-                 next_node=None,
-                 prev_node=None):
+                 player=Player):
         self._player = player
-        self._next_node = next_node
-        self._prev_node = prev_node
+        self._next_node = None
+        self._prev_node = None
+        # next node moves towards the head
+        # prev node moves towards the tail
+
+    def __str__(self):
+        return f"Player: {self.player}"
 
     @property
     def player(self):
@@ -34,5 +37,4 @@ class PlayerNode:
     def key(self):
         return self.player.uid
 
-    def __str__(self) -> str:
-        return str(self)
+
