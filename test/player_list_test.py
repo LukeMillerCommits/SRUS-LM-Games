@@ -37,3 +37,11 @@ class TestPlayerList(unittest.TestCase):
         players.insert_node_at_head(PlayerNode(Player("2", "Jake")))
         players.pop_from_head()
         self.assertEqual(players.pop_from_head(), "Luke")
+
+    def test_insert_node_at_tail(self):
+        players = PlayerList()
+        players.insert_node_at_tail(PlayerNode(Player("1", "Luke")))
+        players.insert_node_at_tail(PlayerNode(Player("2", "Jake")))
+        self.assertEqual(players.pop_from_head(), "Luke")
+        players.insert_node_at_head(PlayerNode(Player("1", "Luke")))
+        self.assertEqual(players.pop_from_tail(), "Jake")

@@ -47,3 +47,9 @@ class PlayerList:
             pop_name = self.head.player.name
             self.head = self.head.prev_node
             return pop_name
+
+    def pop_from_tail(self):
+        if self.tail is not None:
+            pop_name = self.tail.player.name
+            self.tail = self.tail.next_node
+            return pop_name
