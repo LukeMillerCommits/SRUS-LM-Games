@@ -3,11 +3,13 @@ class Player:
         self._uid = uid
         self._name = name
 
-    def uid(self):
+    @property
+    def uid(self) -> str:
         return self._uid
 
-    def name(self):
+    @property
+    def name(self) -> str:
         return self._name
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self)

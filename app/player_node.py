@@ -30,8 +30,9 @@ class PlayerNode:
     def prev_node(self, prev_node=None):
         self._prev_node = prev_node
 
+    @property
     def key(self):
         return self.player.uid
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self)

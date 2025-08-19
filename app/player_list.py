@@ -17,6 +17,7 @@ class PlayerList:
             # Connection 2 - new_node.prev is None by default
             # Connection 3
             self.root = new_node
+
             # Connection 4
             # self.root_tail = new_node
 
@@ -33,6 +34,6 @@ class PlayerList:
 
     def pop_from_head(self):
         if self.root is not None:
-            pop_name = self.root.name()
+            pop_name = self.root.name
             # self.root = self.root.next_node
             return pop_name
