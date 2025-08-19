@@ -45,3 +45,21 @@ class TestPlayerList(unittest.TestCase):
         self.assertEqual(players.pop_from_head(), "Luke")
         players.insert_node_at_head(PlayerNode(Player("1", "Luke")))
         self.assertEqual(players.pop_from_tail(), "Jake")
+
+    def test_pop_by_key(self):
+        players = PlayerList()
+        players.insert_node_at_head(PlayerNode(Player("1", "Luke")))
+        players.insert_node_at_head(PlayerNode(Player("2", "Jake")))
+        players.insert_node_at_head(PlayerNode(Player("3", "Bob")))
+        self.assertEqual(players.pop_by_key("1"), "Luke")
+
+    def test_display(self):
+        players = PlayerList()
+        players.insert_node_at_head(PlayerNode(Player("1", "Luke")))
+        players.insert_node_at_head(PlayerNode(Player("2", "Jake")))
+        players.insert_node_at_head(PlayerNode(Player("3", "Bob")))
+        players.insert_node_at_head(PlayerNode(Player("4", "Derrek")))
+        players.insert_node_at_head(PlayerNode(Player("5", "Luisa")))
+        players.display(True)
+        self.assertEqual(players.display(),
+                         'Player: 1, Luke, Player: 2, Jake, Player: 3, Bob, Player: 4, Derrek, Player: 5, Luisa, ')

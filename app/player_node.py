@@ -11,7 +11,7 @@ class PlayerNode:
         # prev node moves towards the tail
 
     def __str__(self):
-        return f"Player: {self.player}"
+        return f"Player: {self.key}, {self.player}"
 
     @property
     def player(self):

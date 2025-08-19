@@ -1,7 +1,10 @@
 from player_node import PlayerNode
+from typing import Iterator
 
 
 class PlayerList:
+    _current_node_: PlayerNode | None
+
     def __init__(self,
                  _head: PlayerNode | None = None,
                  _tail: PlayerNode | None = None):
@@ -53,3 +56,31 @@ class PlayerList:
             pop_name = self.tail.player.name
             self.tail = self.tail.next_node
             return pop_name
+
+    def pop_by_key(self, key):
+        pop_name = ""
+        current_node = self.head
+        while current_node is not None:
+            if current_node.key == key:
+                prev_node = current_node.prev_node
+                next_node = current_node.next_node
+                if current_node.prev_node is not None:
+                    prev_node.next_node = next_node
+                if current_node.next_node is not None:
+                    next_node.prev_node = prev_node
+                pop_name = current_node.player.name
+                current_node = None
+            else:
+                current_node = current_node.prev_node
+        return pop_name
+
+    def display(self, forward=True):
+        if forward:
+            current_node = self.tail
+            print_contents = ""
+            while current_node is not None:
+                print_contents = print_contents + str(current_node) + ", "
+                print(str(current_node))
+
+                current_node = current_node.next_node
+            return print_contents
