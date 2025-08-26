@@ -16,12 +16,15 @@ class PlayerList:
 
     def insert_node_at_head(self, new_node):
         if self.is_empty():
-            # every node has four connections,
+
+            # every node has two connections to other nodes
+            # and is connected to by two other nodes:
             # .next, .prev, .next.prev, .prev.next
 
             # Connections 1 - new_node.next is None by default
             # Connection 2 - new_node.prev is None by default
             # Connection 3 and 4:
+
             self.head = new_node
             self.tail = new_node
 
@@ -74,7 +77,10 @@ class PlayerList:
                 current_node = current_node.prev_node
         return pop_name
 
-    def display(self, forward=True):
+    def display(self, forward: True):
+        """
+        Prints every node in the linked list forwards or backwards
+        """
         if forward:
             current_node = self.tail
             print_contents = ""
@@ -83,4 +89,12 @@ class PlayerList:
                 print(str(current_node))
 
                 current_node = current_node.next_node
-            return print_contents
+        else:
+            current_node = self.head
+            print_contents = ""
+            while current_node is not None:
+                print_contents = print_contents + str(current_node) + ", "
+                print(str(current_node))
+
+                current_node = current_node.prev_node
+        return print_contents

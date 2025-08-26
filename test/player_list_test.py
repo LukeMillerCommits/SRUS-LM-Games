@@ -53,13 +53,24 @@ class TestPlayerList(unittest.TestCase):
         players.insert_node_at_head(PlayerNode(Player("3", "Bob")))
         self.assertEqual(players.pop_by_key("1"), "Luke")
 
-    def test_display(self):
+    def test_display_forwards(self):
         players = PlayerList()
         players.insert_node_at_head(PlayerNode(Player("1", "Luke")))
         players.insert_node_at_head(PlayerNode(Player("2", "Jake")))
         players.insert_node_at_head(PlayerNode(Player("3", "Bob")))
         players.insert_node_at_head(PlayerNode(Player("4", "Derrek")))
         players.insert_node_at_head(PlayerNode(Player("5", "Luisa")))
-        players.display(True)
-        self.assertEqual(players.display(),
+        players.display(forward=True)
+        self.assertEqual(players.display(True),
                          'Player: 1, Luke, Player: 2, Jake, Player: 3, Bob, Player: 4, Derrek, Player: 5, Luisa, ')
+
+    def test_display_backwards(self):
+        players = PlayerList()
+        players.insert_node_at_head(PlayerNode(Player("1", "Luke")))
+        players.insert_node_at_head(PlayerNode(Player("2", "Jake")))
+        players.insert_node_at_head(PlayerNode(Player("3", "Bob")))
+        players.insert_node_at_head(PlayerNode(Player("4", "Derrek")))
+        players.insert_node_at_head(PlayerNode(Player("5", "Luisa")))
+        players.display(forward=False)
+        self.assertEqual(players.display(False),
+                         'Player: 5, Luisa, Player: 4, Derrek, Player: 3, Bob, Player: 2, Jake, Player: 1, Luke, ')
