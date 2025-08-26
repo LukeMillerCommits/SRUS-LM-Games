@@ -1,3 +1,5 @@
+from typing import Type
+
 from player import Player
 
 
@@ -14,7 +16,7 @@ class PlayerNode:
         return f"Player: {self.key}, {self.player}"
 
     @property
-    def player(self):
+    def player(self) -> Type[Player]:
         return self._player
 
     @property

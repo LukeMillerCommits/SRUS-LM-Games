@@ -3,6 +3,11 @@ class Player:
         self._uid = uid
         self._name = name
 
+    @classmethod
+    def hash(cls, key):
+        hash_value = hash(key)
+        return hash_value
+
     @property
     def uid(self) -> str:
         return self._uid
@@ -21,3 +26,6 @@ class Player:
 
     def __str__(self) -> str:
         return str(self.name)
+
+    def __hash__(self):
+        return self.hash
