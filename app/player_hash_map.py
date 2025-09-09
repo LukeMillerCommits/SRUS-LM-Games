@@ -4,13 +4,17 @@ from player_node import PlayerNode
 
 
 class PlayerHashMap:
-    #  SIZE: int
-
     def __init__(self,
                  _player_list: PlayerList | None = None,
-                 _hashmap: [PlayerList] * 10 = ()):
+                 _hashmap: [PlayerList()] = None):
+        if _hashmap is None:
+            _hashmap = []
+            for i in range(10):
+                _hashmap.append(PlayerList())
+
         self.player_list = _player_list
         self.hashmap = _hashmap
+        print(len(self.hashmap), "!")
 
     def get_index(self, key: str | Player) -> int:
         if isinstance(key, Player):
@@ -35,21 +39,29 @@ class PlayerHashMap:
 
         player_index = self.get_index(key)
         print(player_index)
+
         player_list = self.hashmap[player_index]
 
         player_present = False
-        if player_list[0] is not None:
-            for players in player_list:
-                if players.uid == key:
-                    player_present = True
+        current_node = player_list.head
+        while current_node is not None:
+            if current_node.player.uid == key:
+                player_present = True
+            else:
+                current_node = current_node.prev_node
+
+        # if player_list.head is not None:
+        #     for players in player_list:
+        #         if players.uid == key:
+        #             player_present = True
 
         if player_present:
-            player_list[player_index].name = name
+            current_node.player.name = name
         else:
-            player_list.insert_node_at_head(PlayerNode(name))
+            player_list.insert_node_at_head(PlayerNode(Player(uid=key, name=name)))
 
     def __len__(self):
-        return 10
+        return 10       # FIX!!!
 
     def __delitem__(self, key):
         # self.SIZE -= 1

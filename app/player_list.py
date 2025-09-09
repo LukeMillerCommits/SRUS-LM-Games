@@ -14,7 +14,7 @@ class PlayerList:
     def is_empty(self):
         return self.head is None
 
-    def insert_node_at_head(self, new_node: {PlayerNode}):
+    def insert_node_at_head(self, new_node: PlayerNode):
         if self.is_empty():
 
             # every node has two connections to other nodes
@@ -23,7 +23,7 @@ class PlayerList:
 
             # Connections 1 - new_node.next is None by default
             # Connection 2 - new_node.prev is None by default
-            # Connection 3 and 4:
+            # Connection 3 and 4:current_node = self.head
 
             self.head = new_node
             self.tail = new_node

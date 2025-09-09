@@ -1,11 +1,12 @@
-from typing import Type
+from __future__ import annotations
 
 from player import Player
 
 
 class PlayerNode:
     def __init__(self,
-                 player=Player):
+                 player: Player):
+        assert isinstance(player, Player), f"Should pass players not {player} of {type(player)}"
         self._player = player
         self._next_node = None
         self._prev_node = None
@@ -16,7 +17,7 @@ class PlayerNode:
         return f"Player: {self.key}, {self.player}"
 
     @property
-    def player(self) -> Type[Player]:
+    def player(self) -> Player:
         return self._player
 
     @property
