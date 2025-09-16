@@ -1,7 +1,10 @@
 class Player:
-    def __init__(self, uid, name):
+    def __init__(self, uid, name, score=0):
         self._uid = uid
         self._name = name
+        self._score = score
+        if score < 0:
+            raise ValueError("Score cannot be negative")
 
     @classmethod
     def hash(cls, key):
@@ -24,8 +27,21 @@ class Player:
     def name(self, name):
         _name = name
 
+    @property
+    def score(self) -> int:
+        return self._score
+
+    @score.setter
+    def score(self, score):
+        _score = score
+
     def __str__(self) -> str:
         return str(self.name)
 
     def __hash__(self):
         return self.hash
+
+    # def __repr__(self):
+    #     return ("Player(name='" + self.name +
+    #             "', uid='" + self.uid +
+    #             "', score= '" + str(self.score) + "')")
