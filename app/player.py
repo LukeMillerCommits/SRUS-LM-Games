@@ -7,6 +7,22 @@ class Player:
             raise ValueError("Score cannot be negative")
 
     @classmethod
+    def quick_sort_by_score(cls, player_list):
+        if len(player_list) <= 1:
+            return player_list
+        pivot = player_list[0]
+        left = []
+        right = []
+        for player in player_list[1:]:
+            if player > pivot:
+                left.append(player)
+            else:
+                right.append(player)
+        return (cls.quick_sort_by_score(left)
+                + [pivot]
+                + cls.quick_sort_by_score(right))
+
+    @classmethod
     def hash(cls, key):
         hash_value = hash(key)
         return hash_value

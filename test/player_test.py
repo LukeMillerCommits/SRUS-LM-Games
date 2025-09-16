@@ -18,7 +18,8 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(player.score, 10)
 
     def test_sort_players(self):
-        players = [Player('1', "Alice", score=10), Player('2', "Bob", score=5),
+        players = [Player('1', "Alice", score=10),
+                   Player('2', "Bob", score=5),
                    Player('3', "Charlie", score=15)]
         # note: ensure initialization code is valid for **your** implementation.
         # For example, is your parameter called uid? is the first parameter name?
@@ -27,7 +28,8 @@ class TestPlayer(unittest.TestCase):
         sorted_players = sorted(players)
 
         # players must be sorted by score as shown here:
-        manually_sorted_players = [Player('2', "Bob", score=5), Player('1', "Alice", score=10),
+        manually_sorted_players = [Player('2', "Bob", score=5),
+                                   Player('1', "Alice", score=10),
                                    Player('3', "Charlie", score=15)]
 
         self.assertListEqual(sorted_players, manually_sorted_players)
@@ -37,6 +39,19 @@ class TestPlayer(unittest.TestCase):
         bob = Player("2", "Bob", 5)
 
         self.assertGreater(alice, bob)
+
+    def test_quick_sort_by_score(self):
+        players = [Player('1', "Alice", score=10),
+                   Player('2', "Bob", score=5),
+                   Player('3', "Charlie", score=15)]
+
+        sorted_players = Player.quick_sort_by_score(players)
+
+        manually_sorted_players = [Player('3', "Charlie", score=15),
+                                   Player('1', "Alice", score=10),
+                                   Player('2', "Bob", score=5)]
+
+        self.assertListEqual(sorted_players, manually_sorted_players)
 
     # def test_repr(self):
     #     player = Player("1", "Luke", "10")
