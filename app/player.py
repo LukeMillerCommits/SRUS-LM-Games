@@ -10,6 +10,16 @@ class Player:
     def quick_sort_by_score(cls, player_list):
         if len(player_list) <= 1:
             return player_list
+
+        # Added alternative sort method to identify lists already sorted.
+        list_sorted = True
+        for i in range(len(player_list)-1):
+            if player_list[i] < player_list[i+1]:
+                list_sorted = False
+        if list_sorted:
+            return player_list
+        # returns list or list fragment if already sorted.
+
         pivot = player_list[0]
         left = []
         right = []
