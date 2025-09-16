@@ -1,3 +1,6 @@
+import random
+
+
 class Player:
     def __init__(self, uid, name, score=0):
         self._uid = uid
@@ -11,23 +14,37 @@ class Player:
         if len(player_list) <= 1:
             return player_list
 
-        # Added alternative sort method to identify lists already sorted.
-        list_sorted = True
-        for i in range(len(player_list)-1):
-            if player_list[i] < player_list[i+1]:
-                list_sorted = False
-        if list_sorted:
-            return player_list
+        # Complexity-inefficient solution
+
+        # list_sorted = True
+        # for i in range(len(player_list)-1):
+        #     if player_list[i] < player_list[i+1]:
+        #         list_sorted = False
+        #         break
+        # if list_sorted:
+        #     print("already sorted")
+        #     return player_list
         # returns list or list fragment if already sorted.
 
-        pivot = player_list[0]
+        # much more efficient, pivot could be set to player_list[random_index]
+        random_index = random.randint(0, len(player_list)-1)
+
+        pivot = player_list[random_index]
         left = []
         right = []
-        for player in player_list[1:]:
+
+        for player in player_list[:random_index]:
             if player > pivot:
                 left.append(player)
             else:
                 right.append(player)
+
+        for player in player_list[random_index+1:]:
+            if player > pivot:
+                left.append(player)
+            else:
+                right.append(player)
+
         return (cls.quick_sort_by_score(left)
                 + [pivot]
                 + cls.quick_sort_by_score(right))

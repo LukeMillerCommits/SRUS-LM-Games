@@ -68,6 +68,9 @@ class TestPlayer(unittest.TestCase):
 
         pre_sorted_players = sorted(players, reverse=True)
 
+        # pre_sorted_players[0], pre_sorted_players[1] = pre_sorted_players[1], pre_sorted_players[0]
+
+        print(pre_sorted_players[0].score, pre_sorted_players[1].score)
         sorted_players = Player.quick_sort_by_score(pre_sorted_players)
 
         self.assertListEqual(sorted_players, pre_sorted_players)
