@@ -7,7 +7,7 @@ from unittest import TestCase
 class TestPlayer(unittest.TestCase):
     def test_uid_returns_uid(self):
         player = Player("1", "Luke")
-        print(player.uid)
+        # print(player.uid)
         self.assertEqual(player.uid, "1")
 
     def test_name_returns_name(self):
@@ -15,7 +15,7 @@ class TestPlayer(unittest.TestCase):
 
     def test_score_returns_score(self):
         player = Player("1", "Luke", 10)
-        print(player.score)
+        # print(player.score)
         self.assertEqual(player.score, 10)
 
     def test_sort_players(self):
@@ -71,6 +71,3 @@ class TestPlayer(unittest.TestCase):
         sorted_players = Player.quick_sort_by_score(pre_sorted_players)
 
         self.assertListEqual(sorted_players, pre_sorted_players)
-
-    # def test_repr(self):
-    #     player = Player("1", "Luke", "10")

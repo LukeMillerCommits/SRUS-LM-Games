@@ -72,8 +72,3 @@ class Player:
 
     def __eq__(self, other):
         return self.score == other.score
-
-    def __repr__(self):
-        return ("Player(name='" + self.name +
-                "', uid='" + self.uid +
-                "', score= '" + str(self.score) + "')")
