@@ -41,6 +41,9 @@ class Player:
     def __hash__(self):
         return self.hash
 
+    def __gt__(self, other):
+        return self.score > other.score
+
     # def __repr__(self):
     #     return ("Player(name='" + self.name +
     #             "', uid='" + self.uid +
