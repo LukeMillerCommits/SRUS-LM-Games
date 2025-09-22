@@ -14,6 +14,7 @@ class PlayerHashMap:
 
         self.player_list = _player_list
         self.hashmap = _hashmap
+        self.size = 0
         print(len(self.hashmap), "!")
 
     def get_index(self, key: str | Player) -> int:
@@ -47,22 +48,25 @@ class PlayerHashMap:
         while current_node is not None:
             if current_node.player.uid == key:
                 player_present = True
+                current_node.player.name = name
+                break
             else:
                 current_node = current_node.prev_node
 
-        # if player_list.head is not None:
-        #     for players in player_list:
-        #         if players.uid == key:
-        #             player_present = True
-
-        if player_present:
-            current_node.player.name = name
-        else:
+        if not player_present:
             player_list.insert_node_at_head(PlayerNode(Player(uid=key, name=name)))
+        self.size += 1
 
     def __len__(self):
-        return 10       # FIX!!!
+        # this code is awful:
+        if self.size == 0:
+            return 10
+        else:
+            return self.size
 
     def __delitem__(self, key):
-        # self.SIZE -= 1
+        player_index = self.get_index(key)
+        player_list = self.hashmap[player_index]
+        player_list.pop_by_key(key)
+        self.size -= 1
         pass
