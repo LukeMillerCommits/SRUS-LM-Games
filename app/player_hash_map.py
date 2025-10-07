@@ -19,9 +19,9 @@ class PlayerHashMap:
 
     def get_index(self, key: str | Player) -> int:
         if isinstance(key, Player):
-            return hash(key) % len(self)  # TODO: implement __hash__ in player
+            return hash(key) % max(len(self), 1)  # TODO: implement __hash__ in player
         else:
-            return Player.hash(key) % len(self)  # TODO implement a hash class method in Player
+            return Player.hash(key) % max(len(self), 1)  # TODO implement a hash class method in Player
 
     def __getitem__(self, key: str):
         # get correct player_list
@@ -55,14 +55,10 @@ class PlayerHashMap:
 
         if not player_present:
             player_list.insert_node_at_head(PlayerNode(Player(uid=key, name=name)))
-        self.size += 1
+            self.size += 1
 
     def __len__(self):
-        # this code is awful:
-        if self.size == 0:
-            return 10
-        else:
-            return self.size
+        return self.size
 
     def __delitem__(self, key):
         player_index = self.get_index(key)
